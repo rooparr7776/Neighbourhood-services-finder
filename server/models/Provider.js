@@ -30,7 +30,26 @@ const providerSchema = new mongoose.Schema({
     role: {
         type: String,
         default: 'provider',
-    }
-});
+    },
+    photo: {
+        type: String,
+        default: '' // will hold the filename or a URL
+    },
+    // models/Provider.js
 
+    location: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            default: 'Point',
+        },
+        coordinates: {
+            type: [Number], // [longitude, latitude]
+            required: true,
+        },
+    },
+
+
+});
+providerSchema.index({ location: '2dsphere' });
 module.exports = mongoose.model('Provider', providerSchema);

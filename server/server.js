@@ -11,6 +11,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use('/uploads', express.static('uploads')); // serve uploaded images
+const uploadRoutes = require('./routes/uploadRoutes');
+app.use('/api/upload', uploadRoutes);
+
+
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const providerRoutes = require('./routes/providerRoutes');
@@ -19,6 +24,7 @@ const bookingRoutes = require('./routes/bookingRoutes');
 app.use('/api/auth', authRoutes);
 app.use('/api/providers', providerRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/profile', require('./routes/profileRoutes'));
 
 // Root route
 app.get('/', (req, res) => {

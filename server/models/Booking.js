@@ -10,8 +10,18 @@ const bookingSchema = new mongoose.Schema({
     },
 
     status: { type: String, default: 'pending' }, // pending | completed | cancelled
-    rating: Number,
-    review: String,
+    rating: {
+        type: Number,
+        min: 1,
+        max: 5,
+        default: null,
+    },
+    review: {
+        type: String,
+        default: '',
+    }
+
+
 });
 
 module.exports = mongoose.model('Booking', bookingSchema);
