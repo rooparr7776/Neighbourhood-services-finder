@@ -23,4 +23,31 @@ router.get('/', authMiddleware, async (req, res) => {
     }
 });
 
+// Get one top-rated available provider per category
+router.get('/top-rated-available', async (req, res) => {
+    try {
+        const today = new Date().toISOString().split('T')[0];
+
+        const pipeline = [
+            { $match: { availableDates: today } },
+            { $sort: { avg_rating: -1 } },
+            {
+                $group: {
+                    _id: '$category',
+                    topProvider: { $first: '$$ROOT' },
+                },
+            },
+            {
+                $replaceWith: '$topProvider',
+            },
+        ];
+
+        const topProviders = await Provider.aggregate(pipeline);
+        res.json(topProviders);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to fetch top providers' });
+    }
+});
+
+
 module.exports = router;

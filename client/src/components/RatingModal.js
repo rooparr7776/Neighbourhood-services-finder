@@ -8,13 +8,13 @@ function RatingModal({ bookingId, providerName, onClose, onSubmit }) {
 
     const handleSubmit = async () => {
         const token = localStorage.getItem('token');
-        await axios.post('http://localhost:5000/api/ratings', {
-            bookingId,
+        await axios.post(`http://localhost:5000/api/bookings/${bookingId}/rate`, {
             rating,
             review,
         }, {
             headers: { Authorization: `Bearer ${token}` },
         });
+
 
         onSubmit();  // refresh parent after submit
         onClose();   // close modal

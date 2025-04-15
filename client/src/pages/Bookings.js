@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import RatingModal from '../components/RatingModal';
+
 
 function Bookings() {
     const [upcoming, setUpcoming] = useState([]);
     const [history, setHistory] = useState([]);
     const [filter, setFilter] = useState('all');
+    const [showRating, setShowRating] = useState(null); // booking being rated
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -103,9 +106,36 @@ function Bookings() {
                         <p><strong>{booking.provider?.name || 'N/A'}</strong> on {booking.date}</p>
                         <p>Status: {booking.status}</p>
                         <p>Price: ₹{booking.price}</p>
+                        {booking.rating && (
+                            <p>⭐ You rated this: {booking.rating}/5</p>
+                        )}
+                        {booking.review && (
+                            <p>💬 "{booking.review}"</p>
+                        )}
+
+                        {booking.status === 'completed' && !booking.rating && (
+                            <button className="btn btn-success btn-sm" onClick={() => setShowRating(booking)}>
+                                Rate
+                            </button>
+                        )}
+                        {showRating && (
+                            <RatingModal
+                                bookingId={showRating._id}
+                                providerName={showRating.provider?.name || 'Provider'}
+                                onClose={() => setShowRating(null)}
+                                onSubmit={() => {
+                                    setShowRating(null);
+                                    const token = localStorage.getItem('token');
+                                    axios.get(`http://localhost:5000/api/bookings?filter=${filter}`, {
+                                        headers: { Authorization: `Bearer ${token}` },
+                                    }).then(res => setHistory(res.data));
+                                }}
+                            />
+                        )}
 
                     </div>
                 ))
+
             )}
         </div>
     );

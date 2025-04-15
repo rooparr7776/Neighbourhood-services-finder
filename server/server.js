@@ -14,6 +14,7 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads')); // serve uploaded images
 const uploadRoutes = require('./routes/uploadRoutes');
 app.use('/api/upload', uploadRoutes);
+app.use('/api/providers', require('./routes/providerRoutes'));
 
 
 // Routes

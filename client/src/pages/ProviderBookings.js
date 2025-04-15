@@ -46,6 +46,15 @@ function ProviderBookings() {
                         <p>Price: ₹{b.price}</p>
 
                         <p><strong>Status:</strong> {b.status}</p>
+
+                        {/* ⭐ Show rating if available */}
+                        {b.rating && (
+                            <p>⭐ User rated: {b.rating}/5</p>
+                        )}
+                        {b.review && (
+                            <p>💬 "{b.review}"</p>
+                        )}
+
                         {b.status === 'pending' && (
                             <button
                                 className="btn btn-success btn-sm"
@@ -59,6 +68,7 @@ function ProviderBookings() {
             )}
         </div>
     );
+
 }
 
 export default ProviderBookings;

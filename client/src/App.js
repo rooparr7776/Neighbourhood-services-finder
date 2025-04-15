@@ -8,6 +8,7 @@ import Search from './pages/Search';
 import Bookings from './pages/Bookings';
 import Profile from './pages/Profile';
 import ProviderBookings from './pages/ProviderBookings';
+import NearbyProviders from './pages/NearbyProviders';
 
 
 function App() {
@@ -45,6 +46,10 @@ function App() {
           element={token && role === 'provider' ? <ProviderBookings /> : <Navigate to="/" />}
         />
 
+        <Route path="/profile" element={<Profile />} />
+
+
+        <Route path="/search-nearby" element={<NearbyProviders />} />
 
         {/* Common Route */}
         <Route
