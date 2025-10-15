@@ -1,0 +1,113 @@
+/* styles/Search.css */
+
+.search-container {
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.search-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.search-input {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-button {
+    padding: 0.5rem 1.25rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.autocomplete{ position:relative; }
+.autocomplete-list{
+  position:absolute;
+  z-index:20;
+  top:100%;
+  left:0;
+  right:0;
+  background:#fff;
+  border:1px solid #ddd;
+  border-top:none;
+  border-radius:0 0 6px 6px;
+  max-height:220px;
+  overflow:auto;
+  box-shadow:0 8px 16px rgba(0,0,0,.08);
+}
+.autocomplete-list li{
+  list-style:none;
+  padding:10px 12px;
+  cursor:pointer;
+}
+.autocomplete-list li:hover,
+.autocomplete-list li.active{
+  background:#f3f4f6;
+}
+
+.provider-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.provider-name {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Request details textarea */
+.request-textarea {
+  width: 100%;
+  min-height: 96px;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 8px;
+  outline: none;
+  resize: vertical;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  background: #ffffff;
+  transition: border-color .2s ease, box-shadow .2s ease;
+  margin-bottom: 0.75rem;
+}
+
+.request-textarea::placeholder {
+  color: #9ca3af; /* gray-400 */
+}
+
+.request-textarea:focus {
+  border-color: #B8A7D0; /* soft lavender to match theme */
+  box-shadow: 0 0 0 3px rgba(184, 167, 208, 0.25);
+}
+
+.badge-gold {
+    color: gold;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.badge-silver {
+    color: silver;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.book-button {
+    background-color: #28a745;
+    color: white;
+    padding: 0.4rem 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

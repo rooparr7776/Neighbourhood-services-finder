@@ -1,0 +1,118 @@
+/* AboutUs.css 
+.about-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.about-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.about-list {
+    padding-left: 1.5rem;
+    list-style: none;
+}
+
+.about-list li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}*/
+
+.about-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    background: linear-gradient(90deg, #dcdce1, #c4c4cc);
+
+
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.2rem;
+    color: #333;
+    border-bottom: 2px solid #8f94fb;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: #030303;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 3s;
+}
+
+.about-text:hover {
+    transform: translateY(-3px);
+}
+
+.about-list {
+    padding-left: 2rem;
+    list-style: none;
+}
+
+.about-list li {
+    position: relative;
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+    color: #444;
+    padding-left: 1.5rem;
+}
+
+.about-list li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #18181a;
+    font-weight: bold;
+}
+
+/* Simple fade animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

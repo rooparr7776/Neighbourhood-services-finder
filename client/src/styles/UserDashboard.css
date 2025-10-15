@@ -1,0 +1,61 @@
+.dash-hero {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 32px;
+  font-weight: bold;
+}
+
+.dash-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.dash-sub {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* Centered Image with same width as the card */
+.dash-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+  max-width: 500px; /* same as card width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dash-image {
+  width: 100%; /* takes full width of wrapper */
+  height: auto;
+  border-radius: 12px;
+}
+
+.dash-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dash-card {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  max-width: 500px; /* width of the card */
+  margin: 0 auto; /* center the card */
+}
+
+.dash-card-content h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.dash-card-content p {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: #555;
+}

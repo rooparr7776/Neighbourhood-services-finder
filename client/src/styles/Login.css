@@ -1,0 +1,154 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Login Container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #4B2E83, #1C1C3C);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Login Form Wrapper */
+.login-form-wrapper {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: formAppear 1.5s ease-out;
+}
+
+/* Heading */
+.login-heading {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #8d790b;
+    /* Gold */
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    animation: fadeIn 2s ease-out;
+}
+
+/* Subheading */
+.subheading {
+    font-size: 1.2rem;
+    color: #8258bc;
+    /* Soft Lavender */
+    margin-bottom: 2rem;
+    font-weight: 300;
+    animation: fadeIn 2.2s ease-out;
+}
+
+/* Form */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.toggle-auth {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.toggle-button {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #B8A7D0;
+    background: #fff;
+    color: #4B2E83;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.toggle-button.active,
+.toggle-button:hover {
+    background: #4B2E83;
+    color: #fff;
+    border-color: #4B2E83;
+}
+
+/* Input Group */
+.input-group {
+    text-align: left;
+}
+
+/* Label */
+.label {
+    font-size: 1rem;
+    color: #4B2E83;
+    /* Deep Purple */
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Input Field */
+.input-field {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 8px;
+    border: 1px solid #B8A7D0;
+    /* Soft Lavender */
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-field:focus {
+    border-color: #FFD700;
+    /* Gold */
+    box-shadow: 0 0 10px rgba(240, 205, 5, 0.6);
+}
+
+/* Button */
+.login-button {
+    padding: 1rem;
+    background-color: #d3bc39;
+    /* Gold */
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.login-button:hover {
+    background-color: #FFCC00;
+    /* Lighter Gold */
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes formAppear {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

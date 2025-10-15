@@ -1,0 +1,23 @@
+.map-picker {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.map-picker-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.map-picker-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none; /* clicks go through */
+}
