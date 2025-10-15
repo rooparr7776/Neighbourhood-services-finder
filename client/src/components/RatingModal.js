@@ -1,6 +1,6 @@
 // components/RatingModal.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 
 function RatingModal({ bookingId, providerName, onClose, onSubmit }) {
     const [rating, setRating] = useState(5);
@@ -8,7 +8,7 @@ function RatingModal({ bookingId, providerName, onClose, onSubmit }) {
 
     const handleSubmit = async () => {
         const token = localStorage.getItem('token');
-        await axios.post(`http://localhost:5000/api/bookings/${bookingId}/rate`, {
+        await api.post(`bookings/${bookingId}/rate`, {
             rating,
             review,
         }, {

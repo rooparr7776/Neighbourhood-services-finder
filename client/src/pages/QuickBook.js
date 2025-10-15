@@ -1,6 +1,6 @@
 // components/QuickBook.js
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import Layout from './Layout';
 import '../styles/QuickBook.css';
 
@@ -13,7 +13,7 @@ function QuickBook() {
     useEffect(() => {
         const fetchProviders = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/providers/quick-book/top-providers');
+                const res = await api.get('providers/quick-book/top-providers');
                 setProviders(res.data);
             } catch (err) {
                 console.error('Failed to fetch top providers:', err);
@@ -25,7 +25,7 @@ function QuickBook() {
 
     const handleBookNow = async (providerId) => {
         try {
-            await axios.post('http://localhost:5000/api/bookings', {
+            await api.post('bookings', {
                 providerId,
                 note: notes[providerId] || '',
             }, {
@@ -68,7 +68,7 @@ function QuickBook() {
                     {providers.map((provider) => (
                         <div className="quickbook-card" key={provider._id}>
                             <img
-                                src={`http://localhost:5000/uploads/${provider.photo}`}
+                                src={`https://neighbourly-m2st.onrender.com/uploads/${provider.photo}`}
                                 alt={provider.name}
                                 className="quickbook-img"
                             />

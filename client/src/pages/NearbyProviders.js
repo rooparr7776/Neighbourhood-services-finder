@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import Layout from './Layout';
 function NearbyProviders() {
     const [lat, setLat] = useState('');
@@ -7,7 +7,7 @@ function NearbyProviders() {
     const [results, setResults] = useState([]);
 
     const handleSearch = async () => {
-        const res = await axios.get(`http://localhost:5000/api/providers/nearby?lat=${lat}&lng=${lng}`);
+        const res = await api.get(`providers/nearby?lat=${lat}&lng=${lng}`);
         setResults(res.data);
     };
 

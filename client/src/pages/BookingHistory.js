@@ -1,6 +1,6 @@
 // pages/BookingHistory.js
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import RatingModal from '../components/RatingModal';
 import Layout from './Layout';
 
@@ -11,7 +11,7 @@ function BookingHistory() {
 
     const fetchHistory = async () => {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/bookings/history', {
+        const res = await api.get('bookings/history', {
             headers: { Authorization: `Bearer ${token}` },
         });
         setHistory(res.data);

@@ -1,6 +1,6 @@
 // pages/Search.js
 import React, { useEffect, useMemo, useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import Layout from './Layout';
 import '../styles/Search.css';
 
@@ -30,7 +30,7 @@ function Search() {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        axios.get('http://localhost:5000/api/profile', {
+        api.get('profile', {
             headers: token ? { Authorization: `Bearer ${token}` } : {}
         })
         .then(res => {
@@ -65,7 +65,7 @@ function Search() {
         if (lng) params.append('lng', lng);
         if (category) params.append('category', category);
         const token = localStorage.getItem('token');
-        const res = await axios.get(`http://localhost:5000/api/providers/nearby?${params.toString()}` , {
+        const res = await api.get(`providers/nearby?${params.toString()}` , {
             headers: token ? { Authorization: `Bearer ${token}` } : {}
         });
         setResults(res.data);
@@ -75,7 +75,7 @@ function Search() {
         const token = localStorage.getItem('token');
         try {
             const note = notes[providerId] || '';
-            await axios.post('http://localhost:5000/api/bookings', { providerId, note }, {
+            await api.post('bookings', { providerId, note }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setRequested(prev => ({ ...prev, [providerId]: true }));

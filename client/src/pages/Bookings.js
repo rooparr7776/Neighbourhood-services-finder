@@ -1,6 +1,6 @@
 // pages/Bookings.js
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import RatingModal from '../components/RatingModal';
 import ChatModal from '../components/ChatModal';
 import Layout from './Layout';
@@ -18,7 +18,7 @@ function Bookings() {
 
         const fetchUpcoming = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/bookings/upcoming', {
+                const res = await api.get('bookings/upcoming', {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setUpcoming(res.data);
@@ -29,7 +29,7 @@ function Bookings() {
 
         const fetchHistory = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/bookings?filter=${filter}`, {
+                const res = await api.get(`bookings?filter=${filter}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setHistory(res.data);
@@ -45,17 +45,17 @@ function Bookings() {
     const cancelBooking = async (bookingId) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.post(`http://localhost:5000/api/bookings/${bookingId}/cancel`, {}, {
+            await api.post(`bookings/${bookingId}/cancel`, {}, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             alert("Booking cancelled");
 
-            const updatedUpcoming = await axios.get('http://localhost:5000/api/bookings/upcoming', {
+            const updatedUpcoming = await api.get('bookings/upcoming', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setUpcoming(updatedUpcoming.data);
 
-            const updatedHistory = await axios.get(`http://localhost:5000/api/bookings?filter=${filter}`, {
+            const updatedHistory = await api.get(`bookings?filter=${filter}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setHistory(updatedHistory.data);
@@ -153,7 +153,7 @@ function Bookings() {
                                     onSubmit={() => {
                                         setShowRating(null);
                                         const token = localStorage.getItem('token');
-                                        axios.get(`http://localhost:5000/api/bookings?filter=${filter}`, {
+                                        api.get(`bookings?filter=${filter}`, {
                                             headers: { Authorization: `Bearer ${token}` },
                                         }).then(res => setHistory(res.data));
                                     }}

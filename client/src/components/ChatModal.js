@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import '../styles/ChatModal.css';
 
 function ChatModal({ bookingId, onClose }) {
@@ -13,7 +13,7 @@ function ChatModal({ bookingId, onClose }) {
 
   const fetchMessages = useCallback(async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/chat/${bookingId}/messages`, {
+      const res = await api.get(`chat/${bookingId}/messages`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessages(res.data);
@@ -37,7 +37,7 @@ function ChatModal({ bookingId, onClose }) {
       const form = new FormData();
       form.append('text', text);
       if (image) form.append('image', image);
-      await axios.post(`http://localhost:5000/api/chat/${bookingId}/messages`, form, {
+      await api.post(`chat/${bookingId}/messages`, form, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setText('');
@@ -65,7 +65,7 @@ function ChatModal({ bookingId, onClose }) {
                 <div className="chat-text">{m.text}</div>
                 {m.image && (
                   <div className="chat-image" style={{ marginTop: 6 }}>
-                    <img src={`http://localhost:5000/uploads/${m.image}`} alt="attachment" style={{ maxWidth: '100%', borderRadius: 6 }} />
+                    <img src={`https://neighbourly-m2st.onrender.com/uploads/${m.image}`} alt="attachment" style={{ maxWidth: '100%', borderRadius: 6 }} />
                   </div>
                 )}
                 <div className="chat-time">{new Date(m.createdAt).toLocaleTimeString()}</div>

@@ -1,6 +1,6 @@
 // components/Profile.js
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import Layout from './Layout';
 import '../styles/Profile.css';
 import userPlaceholder from '../assets/user.png';
@@ -15,7 +15,7 @@ function Profile() {
     const token = localStorage.getItem('token');
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/profile', {
+        api.get('profile', {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(res => setProfile(res.data))
@@ -39,11 +39,11 @@ function Profile() {
         try {
             const form = new FormData();
             form.append('photo', file);
-            const up = await axios.post('http://localhost:5000/api/upload', form, {
+            const up = await api.post('upload', form, {
                 headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
             });
             const filename = up.data.filename;
-            const patched = await axios.patch('http://localhost:5000/api/profile/photo', { filename }, {
+            const patched = await api.patch('profile/photo', { filename }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setProfile(patched.data);
@@ -73,7 +73,7 @@ function Profile() {
         ? `https://www.google.com/maps?q=${lat},${lng}&z=14&output=embed`
         : null;
     const isProvider = profile.role === 'provider';
-    const photoUrl = profile.photo ? `http://localhost:5000/uploads/${profile.photo}` : (isProvider ? providerPlaceholder : userPlaceholder);
+    const photoUrl = profile.photo ? `https://neighbourly-m2st.onrender.com/uploads/${profile.photo}` : (isProvider ? providerPlaceholder : userPlaceholder);
 
     return (
         <Layout>

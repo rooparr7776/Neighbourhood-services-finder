@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import Layout from './Layout';
 import '../styles/ProviderBookings.css';
 import ChatModal from '../components/ChatModal';
@@ -24,7 +24,7 @@ function ProviderBookings() {
     const fetchBookings = async () => {
         const token = localStorage.getItem('token');
         try {
-            const res = await axios.get('http://localhost:5000/api/bookings/provider', {
+            const res = await api.get('bookings/provider', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setBookings(res.data);
@@ -40,7 +40,7 @@ function ProviderBookings() {
     const acceptBooking = async (bookingId) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.post(`http://localhost:5000/api/bookings/${bookingId}/accept`, {}, {
+            await api.post(`bookings/${bookingId}/accept`, {}, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             await fetchBookings();
@@ -53,7 +53,7 @@ function ProviderBookings() {
     const rejectBooking = async (bookingId) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.post(`http://localhost:5000/api/bookings/${bookingId}/reject`, {}, {
+            await api.post(`bookings/${bookingId}/reject`, {}, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             await fetchBookings();
@@ -66,7 +66,7 @@ function ProviderBookings() {
     const handleComplete = async (bookingId) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.post(`http://localhost:5000/api/bookings/${bookingId}/complete`, {}, {
+            await api.post(`bookings/${bookingId}/complete`, {}, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             alert('Marked as completed');
@@ -80,7 +80,7 @@ function ProviderBookings() {
     const cancelBooking = async (bookingId) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.post(`http://localhost:5000/api/bookings/${bookingId}/cancel`, {}, {
+            await api.post(`bookings/${bookingId}/cancel`, {}, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchBookings();

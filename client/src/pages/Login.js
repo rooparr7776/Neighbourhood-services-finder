@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 import '../styles/Login.css';
 import MapPicker from '../components/MapPicker';
 import LocationSelector from '../components/LocationSelector';
@@ -28,7 +28,7 @@ function Login() {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/login', {
+            const res = await api.post('auth/login', {
                 email,
                 password,
                 role,
@@ -134,7 +134,7 @@ setLocationConfirmed(true); // ✅ mark location as confirmed
                 if (photo) form.append('photo', photo);
             }
 
-            const res = await axios.post('http://localhost:5000/api/auth/register', form, {
+            const res = await api.post('auth/register', form, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 
