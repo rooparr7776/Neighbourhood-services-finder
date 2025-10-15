@@ -1,16 +1,16 @@
 import axios from 'axios';
+
 const api = axios.create({
-    baseURL: `${process.env.REACT_APP_API_URL}/api`,
+  baseURL: 'https://neighbourly-m2st.onrender.com/api',
 });
 
 
-
 api.interceptors.request.use((req) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-        req.headers.Authorization = `Bearer ${token}`;
-    }
-    return req;
+  const token = localStorage.getItem('token');
+  if (token) {
+    req.headers.Authorization = `Bearer ${token}`;
+  }
+  return req;
 });
 
 export default api;
